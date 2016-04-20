@@ -39,7 +39,7 @@ public class verifier {
 
     private void getProofValues(){
         try{
-            BufferedReader reader = new BufferedReader(new FileReader(new File("/home/aredev/Documents/credentials/output.txt")));
+            BufferedReader reader = new BufferedReader(new FileReader(new File("output.txt")));
             //For the pi it it without the /home/aredev/...
             String line;
             c = new BigInteger(reader.readLine());
@@ -55,7 +55,7 @@ public class verifier {
 
     private BigInteger getChallenges(int i){
         try{
-            BufferedReader reader = new BufferedReader(new FileReader(new File("/home/aredev/Documents/credentials/challenge.xml")));
+            BufferedReader reader = new BufferedReader(new FileReader(new File("c.txt")));
             //For the pi it will be c.txt
             String a = reader.readLine();
             if (i == 0){
