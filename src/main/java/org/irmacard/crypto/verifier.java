@@ -39,7 +39,8 @@ public class verifier {
 
     private void getProofValues(){
         try{
-            BufferedReader reader = new BufferedReader(new FileReader(new File("/home/aredev/Documents/output.txt")));
+            BufferedReader reader = new BufferedReader(new FileReader(new File("/home/aredev/Documents/credentials/output.txt")));
+            //For the pi it it without the /home/aredev/...
             String line;
             c = new BigInteger(reader.readLine());
             A = new BigInteger(reader.readLine());
@@ -52,10 +53,29 @@ public class verifier {
         }
     }
 
+    private BigInteger getChallenges(int i){
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader(new File("/home/aredev/Documents/credentials/challenge.xml")));
+            //For the pi it will be c.txt
+            String a = reader.readLine();
+            if (i == 0){
+                return new BigInteger(a);
+            }
+            else{
+                reader.readLine();
+                return new BigInteger(reader.readLine());
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
     public boolean checkProof(){
         proof = new ProofD(c, A, eResponse, vResponse, aResponses, aDisclosed);
-        System.out.println(tp.getNonce());
-        //return proof.verify(tp.getPk(), tp.getContext(), tp.getNonce());
-        return true;
+        return proof.verify(tp.getPk(), getChallenges(0), getChallenges(1));
     }
 }

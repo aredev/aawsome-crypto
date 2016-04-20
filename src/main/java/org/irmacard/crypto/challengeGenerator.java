@@ -1,7 +1,6 @@
 package org.irmacard.crypto;
 
 import org.irmacard.credentials.idemix.IdemixSystemParameters;
-import sun.security.util.BigInt;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
