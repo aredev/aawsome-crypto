@@ -11,14 +11,14 @@ import java.util.HashMap;
  */
 public class verifier {
 
-    ProofD proof;
-    BigInteger c;
-    BigInteger A;
-    BigInteger eResponse;
-    BigInteger vResponse;
-    HashMap<Integer, BigInteger> aResponses;
-    HashMap<Integer, BigInteger> aDisclosed;
-    thesisParameters tp;
+    private ProofD proof;
+    private BigInteger c;
+    private BigInteger A;
+    private BigInteger eResponse;
+    private BigInteger vResponse;
+    private HashMap<Integer, BigInteger> aResponses;
+    private HashMap<Integer, BigInteger> aDisclosed;
+    private thesisParameters tp;
 
     public verifier() {
         tp = new thesisParameters();

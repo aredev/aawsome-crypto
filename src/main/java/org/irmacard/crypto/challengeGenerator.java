@@ -26,7 +26,7 @@ public class challengeGenerator {
     }
 
     /**
-     * Genereert data
+     * Writes random context and nonce a file
      * @param context
      * @param nonce
      */

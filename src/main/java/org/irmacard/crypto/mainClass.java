@@ -2,10 +2,7 @@ package org.irmacard.crypto;
 
 import org.irmacard.credentials.CredentialsException;
 import org.irmacard.credentials.idemix.IdemixCredential;
-import org.irmacard.credentials.idemix.IdemixPublicKey;
 import org.irmacard.credentials.idemix.proofs.ProofD;
-import org.irmacard.credentials.info.InfoException;
-import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
@@ -33,9 +30,7 @@ public class mainClass {
             try {
                 IdemixCredential credential = i.fromFileToCredential();
                 BigInteger context = i.fromFileTo(0);
-                System.out.println(context.toString());
                 BigInteger nonce = i.fromFileTo(1);
-                System.out.println(nonce.toString());
                 ProofD proof = i.generateDisclosureProof(credential, Arrays.asList(1), context, nonce);
                 i.proofDToXml(proof);
             } catch (IOException e) {

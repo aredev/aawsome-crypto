@@ -28,9 +28,6 @@ public class thesisParameters {
             new BigInteger(1, "one".getBytes())
     );
 
-    private BigInteger context;
-    private BigInteger nonce;
-
     private IdemixPublicKey pk;
     private IdemixSecretKey sk;
 
@@ -55,19 +52,4 @@ public class thesisParameters {
         return attributes;
     }
 
-    public BigInteger getNonce() {
-        return nonce;
-    }
-
-    public void setNonce(BigInteger nonce) {
-        this.nonce = nonce;
-    }
-
-    public BigInteger getContext() {
-        return context;
-    }
-
-    public void setContext(BigInteger context) {
-        this.context = context;
-    }
 }

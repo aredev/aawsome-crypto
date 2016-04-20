@@ -40,15 +40,6 @@ public class issuer {
         pk = tp.getPk();
         sk = tp.getSk();
         attributes = tp.getAttributes();
-
-        IdemixCredential cd = null;
-        try{
-            cd = this.issueCredential();
-            //ProofD proof = this.generateDisclosureProof(cd, Arrays.asList(1), new cha);
-            //this.proofDToXml(proof);
-        } catch (CredentialsException e) {
-            e.printStackTrace();
-        }
     }
 
     public void credentialToFile(IdemixCredential ic) {
@@ -168,9 +159,7 @@ public class issuer {
      * @return
      */
     public ProofD generateDisclosureProof(IdemixCredential credential, List<Integer> indexes, BigInteger context, BigInteger nonce1){
-        ProofD proof =  credential.createDisclosureProof(indexes, context, nonce1);
-        System.out.println(proof.getDisclosedAttributes());
-
+        ProofD proof = credential.createDisclosureProof(indexes, context, nonce1);
         return proof;
     }
 
