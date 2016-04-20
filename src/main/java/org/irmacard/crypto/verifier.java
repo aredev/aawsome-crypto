@@ -62,7 +62,7 @@ public class verifier {
                 return new BigInteger(a);
             }
             else{
-                reader.readLine();
+                //reader.readLine();
                 return new BigInteger(reader.readLine());
             }
         } catch (FileNotFoundException e) {
