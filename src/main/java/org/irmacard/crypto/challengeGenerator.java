@@ -1,7 +1,10 @@
 package org.irmacard.crypto;
 
 import org.irmacard.credentials.idemix.IdemixSystemParameters;
+import sun.security.util.BigInt;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.math.BigInteger;
 import java.util.Random;
 
@@ -18,13 +21,25 @@ public class challengeGenerator {
         r = new Random();
         parameters = new thesisParameters();
         systemParameters = parameters.getPk().getSystemParameters();
+        BigInteger context = new BigInteger(systemParameters.l_h, r);
+        BigInteger nonce = new BigInteger(systemParameters.l_statzk, r);
+        this.saveToFile(context, nonce);
     }
 
-    public BigInteger generateContext(){
-        return new BigInteger(systemParameters.l_h, r);
-    }
+    /**
+     * Genereert data
+     * @param context
+     * @param nonce
+     */
+    private void saveToFile(BigInteger context, BigInteger nonce){
+        try {
+            PrintWriter writer = new PrintWriter("c.txt");
+            writer.println(context.toString());
+            writer.println(nonce.toString());
+            writer.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
-    public BigInteger generateNonce(){
-        return new BigInteger(systemParameters.l_statzk, r);
     }
 }

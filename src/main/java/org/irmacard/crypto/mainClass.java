@@ -11,8 +11,7 @@ public class mainClass {
         String option = "c"; //args[0];
 
         if (option.equals("c")) {
-            System.out.println(new challengeGenerator().generateContext());
-            System.out.println(new challengeGenerator().generateNonce());
+            new challengeGenerator();
         }
     }
 }
