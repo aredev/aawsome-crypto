@@ -21,9 +21,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
 import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by aredev on 20-4-16.
@@ -115,13 +113,28 @@ public class issuer {
         String attr = reader.readLine();
         attr = attr.replace("[", "");
         attr = attr.replace("]", "");
-        BigInteger attrNr = new BigInteger(attr);
+        List<BigInteger> attributes = fromFileToAttributes(attr);
 
         BufferedReader rdr = new BufferedReader(new FileReader(new File("/home/aredev/Documents/credentials/secret.txt")));
         BigInteger secret = new BigInteger(rdr.readLine());
 
-        IdemixCredential ic = new IdemixCredential(publicKey, secret, Arrays.asList(attrNr), signature);
+        IdemixCredential ic = new IdemixCredential(publicKey, secret, attributes, signature);
         return ic;
+    }
+
+    /**
+     * Get from a line of attributes written as [a1, a2, ..., an] the attributes
+     * @param attributeLine
+     * @return List of attributes
+     */
+    private List<BigInteger> fromFileToAttributes(String attributeLine){
+        String[] attributeLineEls = attributeLine.split(",");
+        List<BigInteger> attributeList = new ArrayList<BigInteger>();
+        for (String attribute : attributeLineEls){
+            attribute.replace("\\s+",""); //Trim the whitespaces
+            attributeList.add(new BigInteger(attribute));
+        }
+        return attributeList;
     }
 
     /**
