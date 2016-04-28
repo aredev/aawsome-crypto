@@ -39,9 +39,11 @@ public class mainClass {
                 e.printStackTrace();
             }
         }else if (option.equals("i")){
+            System.out.println("Issuing a credential");
             //issue a credential and writes to XML file
             issuer i = new issuer();
             try {
+                System.out.println("Writing the credential to a file");
                 i.credentialToFile(i.issueCredential());
             } catch (CredentialsException e) {
                 e.printStackTrace();

@@ -131,7 +131,7 @@ public class issuer {
         String[] attributeLineEls = attributeLine.split(",");
         List<BigInteger> attributeList = new ArrayList<BigInteger>();
         for (String attribute : attributeLineEls){
-            attribute.replace("\\s+",""); //Trim the whitespaces
+            attribute = attribute.replace(" ",""); //Trim the whitespaces
             attributeList.add(new BigInteger(attribute));
         }
         return attributeList;
