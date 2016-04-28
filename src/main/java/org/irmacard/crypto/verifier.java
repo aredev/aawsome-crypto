@@ -27,14 +27,18 @@ public class verifier {
     }
 
     /**
-     * Todo: Make it work for arbitrary length strings
+     * Get from the attribute string the attributes represented as {1 = a1, 2 = a2, ..., n = an}
      * @param s
+     * @param map
      */
     private void fillHashmap(String s, HashMap map){
         s = s.replace("}", "");
         s = s.replace("{",  "");
-        String[] els = s.split("=");
-        map.put(Integer.parseInt(els[0]), new BigInteger(els[1]));
+        String[] attributeIndexEls = s.split(",");
+        for (String attributeIndex : attributeIndexEls){
+            String[] attributeEls = attributeIndex.split("=");
+            map.put(Integer.parseInt(attributeEls[0]), new BigInteger(attributeEls[1]));
+        }
     }
 
     /**
