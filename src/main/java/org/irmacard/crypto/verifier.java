@@ -37,10 +37,13 @@ public class verifier {
         map.put(Integer.parseInt(els[0]), new BigInteger(els[1]));
     }
 
+    /**
+     * Get the values of the proof of knowledge from the received file
+     * And also the disclosed attributes
+     */
     private void getProofValues(){
         try{
             BufferedReader reader = new BufferedReader(new FileReader(new File("output.txt")));
-            //For the pi it it without the /home/aredev/...
             String line;
             c = new BigInteger(reader.readLine());
             A = new BigInteger(reader.readLine());
@@ -53,16 +56,21 @@ public class verifier {
         }
     }
 
+    /**
+     * Get the challenges (nonce, context) from the textfile
+     * @param 0 =
+     * @return
+     */
     private BigInteger getChallenges(int i){
         try{
             BufferedReader reader = new BufferedReader(new FileReader(new File("c.txt")));
-            //For the pi it will be c.txt
             String a = reader.readLine();
             if (i == 0){
+                //First line
                 return new BigInteger(a);
             }
             else{
-                //reader.readLine();
+                //Second line
                 return new BigInteger(reader.readLine());
             }
         } catch (FileNotFoundException e) {
