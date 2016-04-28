@@ -36,6 +36,7 @@ public class verifier {
         s = s.replace("{",  "");
         String[] attributeIndexEls = s.split(",");
         for (String attributeIndex : attributeIndexEls){
+            attributeIndex = attributeIndex.replaceAll(" ", "");
             String[] attributeEls = attributeIndex.split("=");
             map.put(Integer.parseInt(attributeEls[0]), new BigInteger(attributeEls[1]));
         }
