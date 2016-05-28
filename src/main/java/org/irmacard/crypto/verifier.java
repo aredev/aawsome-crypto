@@ -99,7 +99,7 @@ public class verifier {
                 aDisclosed.put(i+1, new BigInteger(attributes[i]));
             }
 
-            System.out.println(aDisclosed.toString());
+            //System.out.println(aDisclosed.toString());
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
