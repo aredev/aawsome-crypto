@@ -5,11 +5,8 @@ import org.irmacard.credentials.idemix.*;
 import org.irmacard.credentials.idemix.messages.IssueCommitmentMessage;
 import org.irmacard.credentials.idemix.messages.IssueSignatureMessage;
 import org.irmacard.credentials.idemix.proofs.ProofD;
-import org.irmacard.credentials.info.InfoException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -21,7 +18,10 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
 import java.math.BigInteger;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 /**
  * Created by aredev on 20-4-16.
@@ -56,6 +56,8 @@ public class issuer {
             writer.println(ic.getPublicKey().getGeneratorZ().toString());
             writer.println(ic.getPublicKey().getGeneratorS().toString());
             writer.println(ic.getPublicKey().getGeneratorsR().toString());
+
+            System.out.println(attributes.toString());
 
             writer.println(attributes.toString());
             writer.close();
@@ -216,6 +218,10 @@ public class issuer {
         Element proofaResponses = d.createElement("a_resps");
         proofaResponses.appendChild(d.createTextNode(proof.get_a_responses().toString()));
         rootElement.appendChild(proofaResponses);
+
+        Element proofaDisclosed = d.createElement("a_disc");
+        proofaDisclosed.appendChild(d.createTextNode(proof.get_a_disclosed().toString()));
+        rootElement.appendChild(proofaDisclosed);
 
         try {
             writeXml(d, "prooff");

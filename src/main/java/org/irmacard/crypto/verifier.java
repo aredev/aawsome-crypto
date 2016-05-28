@@ -53,7 +53,7 @@ public class verifier {
             eResponse = new BigInteger(reader.readLine());
             vResponse = new BigInteger(reader.readLine());
             fillHashmap(reader.readLine(), aResponses = new HashMap<Integer, BigInteger>());
-            //fillHashmap(reader.readLine(), aDisclosed = new HashMap<Integer, BigInteger>());
+            restoreDisclosedAttributes();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -96,8 +96,10 @@ public class verifier {
             line = line.substring(0, line.indexOf("|")); //Character to denote the end of the disclosed attrs
             String[] attributes = line.split(",");
             for (int i = 0; i < attributes.length; i++){
-                aDisclosed.put(i, new BigInteger(attributes[i]));
+                aDisclosed.put(i+1, new BigInteger(attributes[i]));
             }
+
+            System.out.println(aDisclosed.toString());
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -113,7 +115,6 @@ public class verifier {
      * @return
      */
     public boolean checkProof(){
-        restoreDisclosedAttributes();
         ProofD proof = new ProofD(c, A, eResponse, vResponse, aResponses, aDisclosed);
         return proof.verify(tp.getPk(), getChallenges(0), getChallenges(1));
     }
