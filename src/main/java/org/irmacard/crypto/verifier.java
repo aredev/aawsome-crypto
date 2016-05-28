@@ -92,8 +92,9 @@ public class verifier {
     private void restoreDisclosedAttributes(){
         try {
             BufferedReader reader = new BufferedReader(new FileReader(new File("disclosed.txt")));
+            aDisclosed = new HashMap<Integer, BigInteger>();
             String line = reader.readLine();
-            line = line.substring(0, line.indexOf("|"));
+            line = line.substring(0, line.indexOf("|")); //Character to denote the end of the disclosed attrs
             String[] attributes = line.split(",");
             for (int i = 0; i < attributes.length; i++){
                 aDisclosed.put(i, new BigInteger(attributes[i]));
