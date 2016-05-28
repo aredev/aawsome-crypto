@@ -55,7 +55,7 @@ public class verifier {
             eResponse = new BigInteger(reader.readLine());
             vResponse = new BigInteger(reader.readLine());
             fillHashmap(reader.readLine(), aResponses = new HashMap<Integer, BigInteger>());
-            fillHashmap(reader.readLine(), aDisclosed = new HashMap<Integer, BigInteger>());
+            //fillHashmap(reader.readLine(), aDisclosed = new HashMap<Integer, BigInteger>());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -63,7 +63,7 @@ public class verifier {
 
     /**
      * Get the challenges (nonce, context) from the textfile
-     * @param 0 =
+     * @param  =
      * @return
      */
     private BigInteger getChallenges(int i){
@@ -88,7 +88,7 @@ public class verifier {
 
 
     public boolean checkProof(){
-        proof = new ProofD(c, A, eResponse, vResponse, aResponses, aDisclosed);
+        proof = new ProofD(c, A, eResponse, vResponse, aResponses, null);
         return proof.verify(tp.getPk(), getChallenges(0), getChallenges(1));
     }
 }

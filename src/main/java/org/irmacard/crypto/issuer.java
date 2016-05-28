@@ -209,9 +209,9 @@ public class issuer {
         proofaResponses.appendChild(d.createTextNode(proof.get_a_responses().toString()));
         rootElement.appendChild(proofaResponses);
 
-        Element proofaDisclosed = d.createElement("a_disc");
-        proofaDisclosed.appendChild(d.createTextNode(proof.get_a_disclosed().toString()));
-        rootElement.appendChild(proofaDisclosed);
+        //Element proofaDisclosed = d.createElement("a_disc");
+        //proofaDisclosed.appendChild(d.createTextNode(proof.get_a_disclosed().toString()));
+        //rootElement.appendChild(proofaDisclosed);
 
         try {
             writeXml(d, "prooff");

@@ -31,6 +31,7 @@ public class mainClass {
                 IdemixCredential credential = i.fromFileToCredential();
                 BigInteger context = i.fromFileTo(0);
                 BigInteger nonce = i.fromFileTo(1);
+                //TODO: Add variable disclosing attribute indexes
                 ProofD proof = i.generateDisclosureProof(credential, Arrays.asList(1, 2), context, nonce);
                 i.proofDToXml(proof);
             } catch (IOException e) {
