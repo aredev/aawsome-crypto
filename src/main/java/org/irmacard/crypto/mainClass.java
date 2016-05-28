@@ -72,6 +72,7 @@ public class mainClass {
             for (int i = 0; i < attributes.length; i++){
                 aDisclosed.put(i, new BigInteger(attributes[i]));
             }
+            System.out.println(aDisclosed.toString());
 
         }
     }

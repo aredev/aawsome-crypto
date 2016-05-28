@@ -11,7 +11,6 @@ import java.util.HashMap;
  */
 public class verifier {
 
-    private ProofD proof;
     private BigInteger c;
     private BigInteger A;
     private BigInteger eResponse;
@@ -115,7 +114,7 @@ public class verifier {
      */
     public boolean checkProof(){
         restoreDisclosedAttributes();
-        proof = new ProofD(c, A, eResponse, vResponse, aResponses, aDisclosed);
+        ProofD proof = new ProofD(c, A, eResponse, vResponse, aResponses, aDisclosed);
         return proof.verify(tp.getPk(), getChallenges(0), getChallenges(1));
     }
 }
