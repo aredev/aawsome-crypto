@@ -93,9 +93,9 @@ public class verifier {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(new File("disclosed.txt")));
             String line = reader.readLine();
+            line = line.substring(0, line.indexOf("|"));
             String[] attributes = line.split(",");
             for (int i = 0; i < attributes.length; i++){
-                System.out.println(attributes[i]);
                 aDisclosed.put(i, new BigInteger(attributes[i]));
             }
 

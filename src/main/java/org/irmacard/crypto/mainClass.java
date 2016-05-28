@@ -54,6 +54,24 @@ public class mainClass {
             //Verify the proof
             verifier v = new verifier();
         }else if (option.equals("t")){
+            BufferedReader reader = null;
+            HashMap aDisclosed = new HashMap<Integer, BigInteger>();
+            try {
+                reader = new BufferedReader(new FileReader(new File("disclosed.txt")));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            String line = null;
+            try {
+                line = reader.readLine();
+                line = line.substring(0, line.indexOf("|"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            String[] attributes = line.split(",");
+            for (int i = 0; i < attributes.length; i++){
+                aDisclosed.put(i, new BigInteger(attributes[i]));
+            }
 
         }
     }
