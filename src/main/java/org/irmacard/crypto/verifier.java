@@ -27,7 +27,7 @@ public class verifier {
     }
 
     /**
-     * Get from the attribute string the attributes represented as {1 = a1, 2 = a2, ..., n = an}
+     * Fill an hashmap given an input string as {1 = a1, 2 = a2, ..., n = an}
      * @param s
      * @param map
      */
@@ -49,7 +49,6 @@ public class verifier {
     private void getProofValues(){
         try{
             BufferedReader reader = new BufferedReader(new FileReader(new File("output.txt")));
-            String line;
             c = new BigInteger(reader.readLine());
             A = new BigInteger(reader.readLine());
             eResponse = new BigInteger(reader.readLine());
@@ -86,9 +85,35 @@ public class verifier {
         return null;
     }
 
+    /**
+     * The disclosed attributes are written to file by hostAPD
+     * The verification function needs to know, so we restore it from a file to an object.
+     */
+    private void restoreDisclosedAttributes(){
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(new File("disclosed.txt")));
+            String line = reader.readLine();
+            String[] attributes = line.split(",");
+            for (int i = 0; i < attributes.length; i++){
+                aDisclosed.put(i, new BigInteger(attributes[i]));
+            }
 
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /**
+     * If a user has passed through the Phase 1 check (check wheter the disclosed attributes are correct). Then
+     * This part is called.
+     * @return
+     */
     public boolean checkProof(){
-        proof = new ProofD(c, A, eResponse, vResponse, aResponses, null);
+        restoreDisclosedAttributes();
+        proof = new ProofD(c, A, eResponse, vResponse, aResponses, aDisclosed);
         return proof.verify(tp.getPk(), getChallenges(0), getChallenges(1));
     }
 }

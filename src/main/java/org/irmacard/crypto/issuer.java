@@ -40,6 +40,10 @@ public class issuer {
         attributes = tp.getAttributes();
     }
 
+    /**
+     * Writes a credential to the file credential.txt
+     * @param ic
+     */
     public void credentialToFile(IdemixCredential ic) {
         PrintWriter writer;
         try {
@@ -86,6 +90,11 @@ public class issuer {
         return null;
     }
 
+    /**
+     * Reads the credential file and returns the object
+     * @return IdemixCredential object
+     * @throws IOException
+     */
     public IdemixCredential fromFileToCredential() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(new File("/home/aredev/Documents/credentials/credential.txt")));
 
@@ -118,8 +127,7 @@ public class issuer {
         BufferedReader rdr = new BufferedReader(new FileReader(new File("/home/aredev/Documents/credentials/secret.txt")));
         BigInteger secret = new BigInteger(rdr.readLine());
 
-        IdemixCredential ic = new IdemixCredential(publicKey, secret, attributes, signature);
-        return ic;
+        return new IdemixCredential(publicKey, secret, attributes, signature);
     }
 
     /**
@@ -208,10 +216,6 @@ public class issuer {
         Element proofaResponses = d.createElement("a_resps");
         proofaResponses.appendChild(d.createTextNode(proof.get_a_responses().toString()));
         rootElement.appendChild(proofaResponses);
-
-        //Element proofaDisclosed = d.createElement("a_disc");
-        //proofaDisclosed.appendChild(d.createTextNode(proof.get_a_disclosed().toString()));
-        //rootElement.appendChild(proofaDisclosed);
 
         try {
             writeXml(d, "prooff");

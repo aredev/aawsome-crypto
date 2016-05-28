@@ -52,6 +52,8 @@ public class mainClass {
         }else if (option.equals("v")){
             //Verify the proof
             verifier v = new verifier();
+        }else if (option.equals("b")){
+            System.out.println("isPassenger".getBytes());
         }
     }
 }

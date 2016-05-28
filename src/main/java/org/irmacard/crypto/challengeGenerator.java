@@ -8,6 +8,7 @@ import java.math.BigInteger;
 import java.util.Random;
 
 /**
+ * In this class the fresness for the authentication is generated
  * Created by aredev on 20-4-16.
  */
 public class challengeGenerator {
@@ -16,6 +17,10 @@ public class challengeGenerator {
     private thesisParameters parameters;
     private IdemixSystemParameters systemParameters;
 
+    /**
+     * Constructor: retrieves the parameters and creates the random context and nonce
+     * Calls the saveToFile() function.
+     */
     public challengeGenerator() {
         r = new Random();
         parameters = new thesisParameters();
@@ -26,7 +31,7 @@ public class challengeGenerator {
     }
 
     /**
-     * Writes random context and nonce a file
+     * Writes random context and nonce to a file
      * @param context
      * @param nonce
      */
