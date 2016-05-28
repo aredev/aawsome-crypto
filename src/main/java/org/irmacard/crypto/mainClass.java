@@ -65,6 +65,7 @@ public class mainClass {
             try {
                 line = reader.readLine();
                 line = line.substring(0, line.indexOf("|"));
+                System.out.println(line);
             } catch (IOException e) {
                 e.printStackTrace();
             }
