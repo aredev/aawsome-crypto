@@ -95,6 +95,7 @@ public class verifier {
             String line = reader.readLine();
             String[] attributes = line.split(",");
             for (int i = 0; i < attributes.length; i++){
+                System.out.println(attributes[i]);
                 aDisclosed.put(i, new BigInteger(attributes[i]));
             }
 

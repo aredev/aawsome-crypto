@@ -5,9 +5,10 @@ import org.irmacard.credentials.idemix.IdemixCredential;
 import org.irmacard.credentials.idemix.proofs.ProofD;
 
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
+import java.io.*;
 import java.math.BigInteger;
 import java.util.Arrays;
+import java.util.HashMap;
 
 /**
  * Created by aredev on 20-4-16.
@@ -52,8 +53,8 @@ public class mainClass {
         }else if (option.equals("v")){
             //Verify the proof
             verifier v = new verifier();
-        }else if (option.equals("b")){
-            System.out.println("isPassenger".getBytes());
+        }else if (option.equals("t")){
+
         }
     }
 }
